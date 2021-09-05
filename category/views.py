@@ -13,4 +13,5 @@ def show(request, id):
 
 @api_view(['GET'])
 def search(request):
-    return Response({'message': "Search function will get values from querystring"})
+    print(request.query_params)
+    return Response({'message': f'Search function will get values from querystring {request.query_params}' })
