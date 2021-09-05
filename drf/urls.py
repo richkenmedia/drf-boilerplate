@@ -18,12 +18,20 @@ from django.http import response
 from django.urls import path,include
 from django.views.generic import TemplateView
 from rest_framework.schemas import get_schema_view
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('', lambda self: response.HttpResponse('DRF API Server') ),
     path('admin/', admin.site.urls),
     path('category/', include('category.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    
+    # JWT URL's
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # Swaggar Related Routes
     path('openapi', get_schema_view(
