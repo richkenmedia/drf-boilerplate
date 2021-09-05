@@ -27,8 +27,8 @@ urlpatterns = [
 
     # Swaggar Related Routes
     path('openapi', get_schema_view(
-        title="Your Project",
-        description="API for all things …",
+        title="Django Rest Framework",
+        description="DRF Demo Project Documenation",
         version="1.0.0"
     ), name='openapi-schema'),
     path('swagger-ui/', TemplateView.as_view(
